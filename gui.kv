@@ -1,0 +1,44 @@
+ScreenManager:
+    MenuScreen:
+    CustomScreen:
+
+<MenuScreen>:
+    name: 'menu_screen'
+    
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'Mi Aplicación'
+            left_action_items: [['menu', lambda x: app.menu.open(self)]]
+
+        ScrollView:
+
+            MDList:
+                OneLineIconListItem:
+                    text: 'Inicio'
+                    on_release: app.root.current = 'custom_screen'
+                    on_release: app.menu.dismiss()
+
+                OneLineIconListItem:
+                    text: 'Perfil'
+                    on_release: app.menu.dismiss()
+
+                OneLineIconListItem:
+                    text: 'Configuración'
+                    on_release: app.menu.dismiss()
+
+                OneLineIconListItem:
+                    text: 'Ayuda'
+                    on_release: app.menu.dismiss()
+
+<CustomScreen>:
+    name: 'custom_screen'
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Custom Screen'
+            halign: 'center'
+            font_style: 'H5'
+        MDButton:
+            text: 'Volver al menú'
+            on_release: app.root.current = 'menu_screen'
